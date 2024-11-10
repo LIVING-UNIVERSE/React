@@ -38,7 +38,8 @@ function App() {
 
   return (
     <TodoProvider value={{todos,updateTodo,deleteTodo,toggleComplete,addTodo}}>
-      <div className="bg-[#172842] min-h-screen py-8">
+      <div className=" min-h-screen py-8 bg-cover "
+      style={{backgroundImage:'url(https://images.pexels.com/photos/1166209/pexels-photo-1166209.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2)'}}>
           <div className="w-full max-w-2xl mx-auto shadow-md rounded-lg px-4 py-3 text-white">
               <h1 className="text-2xl font-bold text-center mb-8 mt-2">Manage Your Todos</h1>
               <div className="mb-4">
