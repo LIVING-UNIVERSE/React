@@ -16,7 +16,7 @@ function InputBox({
     const idForLabel= useId();
     return (
         <div className={`bg-white p-3 rounded-lg text-sm flex ${className}`}>
-            <div className="w-1/2">
+            <div className="w-1/2 text-black">
                 <label  htmlFor={idForLabel} className="text-black/40 mb-2 inline-block">
                     {label}
                 </label>
@@ -36,16 +36,11 @@ function InputBox({
                     className="rounded-lg px-1 py-1 bg-gray-100 cursor-pointer outline-none text-blue-600"
                     disabled={currencyDisable}
                     value={selectCurrency}
-                    // why we use && -> this is basically a short-circuit condition telling
-                    // if onCurencyChange exists the on onCurrencyChange(e.target.value) will
-                    //execute and then pass e.target.value in onCurrencyChange funcion 
                     onChange={(e)=>onCurrencyChange && onCurrencyChange(e.target.value)}
                 >
                         
                         {currencyOptions.map((currency)=>(
                         <option value={currency}
-                        //on passing the value of currency you have to uppercase it as 
-                        //input in the API.
                         key={currency}
                         >
                             {currency}
@@ -59,3 +54,9 @@ function InputBox({
 }
 
 export default InputBox;
+                    // why we use && -> this is basically a short-circuit condition telling
+                    // if onCurencyChange exists the on onCurrencyChange(e.target.value) will
+                    //execute and then pass e.target.value in onCurrencyChange funcion 
+
+                    //on passing the value of currency you have to uppercase it as 
+                    //input in the API.
