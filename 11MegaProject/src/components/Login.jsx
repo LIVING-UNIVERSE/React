@@ -3,7 +3,9 @@ import {login as authLogin } from '../features/authSlice'
 import { useDispatch } from 'react-redux'
 import authService from '../appwrite/auth'
 import { Link,useNavigate } from 'react-router-dom'
-import {Logo,Input,Button} from "./index"
+import Button from './Button'
+import Input from './Input'
+import Logo from './Logo'
 import {useForm} from 'react-hook-form'
 
 function Login() {
@@ -17,7 +19,7 @@ function Login() {
     try {
       const session = await authService.login(data)
       if(session){
-        const userData = await authService.getCurrentUser(data)
+        const userData = await authService.getCurrentUser()
         if(userData){
           dispatch(authLogin(userData))
           navigate("/")
@@ -36,7 +38,7 @@ function Login() {
       border border-black/10`}>
         <div
         className='mb-2 flex justify-center'>
-          <span className='inline-block w-full max-w-[100px'>
+          <span className='inline-block w-full max-w-[100px]'>
             <Logo width='100%'/>
           </span>
         </div>
@@ -67,9 +69,9 @@ function Login() {
               {...register("email",{
                 required:true,
                 validate: {
-                  matchPattern :(value)=>/[A-Za-z.]+@[a-z]+\.[a-z.]+/.test(value)||
-                  "Email address must be valid",
-                }
+                    matchPattern: (value) =>
+                      /[A-Za-z.]+@[a-z]+\.[a-z.]+/.test(value) || "Email address must be valid",
+                },
               })}
             />
             <Input

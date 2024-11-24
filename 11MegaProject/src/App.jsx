@@ -3,7 +3,8 @@ import { useState, useEffect } from 'react'
 import './App.css'
 import  authService from './appwrite/auth'
 import {login,logout} from './features/authSlice'
-import { Header ,Footer} from './components'
+import Header from './components/Header/Header'
+import Footer from './components/Footer/Footer'
 
 function App() {
   const [loading,setLoading]= useState(true)
